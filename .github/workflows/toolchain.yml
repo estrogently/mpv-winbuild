@@ -192,6 +192,7 @@ jobs:
           git config --global pull.rebase true
           git config --global rebase.autoStash true
           git config --global fetch.prune true
+      - uses: actions/checkout@v4
       - name: Checkout toolchain
         uses: actions/checkout@v4
         with:
