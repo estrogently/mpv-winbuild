@@ -1,12 +1,58 @@
-From 0f2b0d11f75d9dbcd1f0574f53dbb1305859db70 Mon Sep 17 00:00:00 2001
+From 587cbcebf3c4c722cd4c239fc7e0a5649bb43be3 Mon Sep 17 00:00:00 2001
 From: Bonnie <41487185+estrogently@users.noreply.github.com>
-Date: Mon, 20 Nov 2023 14:55:22 +0100
+Date: Sun, 26 Nov 2023 17:52:18 +0100
 Subject: [PATCH] ignore me
 
 ---
+ packages/ffmpeg.cmake     | 6 ------
  packages/libplacebo.cmake | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ 2 files changed, 1 insertion(+), 7 deletions(-)
 
+diff --git a/packages/ffmpeg.cmake b/packages/ffmpeg.cmake
+index d3feb3c..a0c6e48 100644
+--- a/packages/ffmpeg.cmake
++++ b/packages/ffmpeg.cmake
+@@ -1,7 +1,6 @@
+ ExternalProject_Add(ffmpeg
+     DEPENDS
+         amf-headers
+-        avisynth-headers
+         nvcodec-headers
+         bzip2
+         gmp
+@@ -18,7 +17,6 @@ ExternalProject_Add(ffmpeg
+         libbs2b
+         libvpx
+         libwebp
+-        libzimg
+         libmysofa
+         fontconfig
+         harfbuzz
+@@ -39,7 +37,6 @@ ExternalProject_Add(ffmpeg
+         aom
+         rav1e
+         dav1d
+-        vapoursynth
+         uavs3d
+         davs2
+         rubberband
+@@ -60,8 +57,6 @@ ExternalProject_Add(ffmpeg
+         --enable-version3
+         --enable-nonfree
+         --enable-postproc
+-        --enable-avisynth
+-        --enable-vapoursynth
+         --enable-gmp
+         --enable-libass
+         --enable-libbluray
+@@ -89,7 +84,6 @@ ExternalProject_Add(ffmpeg
+         --enable-libdavs2
+         --enable-libuavs3d
+         --enable-libxvid
+-        --enable-libzimg
+         --enable-mbedtls
+         --enable-libxml2
+         --enable-libmysofa
 diff --git a/packages/libplacebo.cmake b/packages/libplacebo.cmake
 index d7e5dcd..2a9ae49 100644
 --- a/packages/libplacebo.cmake
