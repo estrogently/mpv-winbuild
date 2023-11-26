@@ -384,8 +384,6 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const path = require('path');
-            const types = ["mpv-debug", "mpv-dev", "mpv"];
             let arch="";
             switch ( "${{ matrix.bit }}" ) {
               case "32":
@@ -398,15 +396,6 @@ jobs:
                 arch = "x86_64-v3";
                 break;
             }
-            for (let type of types) {
-              const globber = await glob.create(`mpv-winbuild-cmake/release/${type}-${arch}-*.7z`);
-              const files = await globber.glob();
-              if ( files.length > 0 ) {
-                const file = files[0];
-                core.exportVariable( `${type}_name`, path.basename(file) );
-                core.exportVariable( `${type}_path`, file );
-              }
-            }
             
             let { stdout: ffmpeg_hash } = await exec.getExecOutput("git -C mpv-winbuild-cmake/src_packages/ffmpeg rev-parse --short HEAD");
             ffmpeg_hash = ffmpeg_hash.trim();
@@ -416,25 +405,6 @@ jobs:
             const ffmpeg_path = (await globber.glob())[0]
             await exec.exec(`7z a -m0=lzma2 -mx=9 -ms=on mpv-winbuild-cmake/release/${ffmpeg_name}.7z ${ffmpeg_path}`)
 
-      - name: upload mpv-debug
-        uses: actions/upload-artifact@v3
-        if: ${{ env.mpv-debug_name && env.mpv-debug_path }}
-        with:
-          name: ${{ env.mpv-debug_name }}
-          path: ${{ env.mpv-debug_path }}
-      - name: upload mpv-dev
-        uses: actions/upload-artifact@v3
-        if: ${{ env.mpv-dev_name && env.mpv-dev_path }}
-        with:
-          name: ${{ env.mpv-dev_name }}
-          path: ${{ env.mpv-dev_path }}
-      - name: upload mpv
-        uses: actions/upload-artifact@v3
-        if: ${{ env.mpv_name && env.mpv_path }}
-        with:
-          name: ${{ env.mpv_name }}
-          path: ${{ env.mpv_path }}
-          
       - name: upload ffmpeg
         uses: actions/upload-artifact@v3
         if: ${{ env.ffmpeg_name }}
