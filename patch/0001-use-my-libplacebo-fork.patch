@@ -1,0 +1,25 @@
+From 7007714b240fa627e355ea423617d4f74b77dbfe Mon Sep 17 00:00:00 2001
+From: Bonnie <41487185+estrogently@users.noreply.github.com>
+Date: Sun, 26 Nov 2023 18:15:38 +0100
+Subject: [PATCH] use my libplacebo fork
+
+---
+ packages/libplacebo.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packages/libplacebo.cmake b/packages/libplacebo.cmake
+index c145767..e1aa98d 100644
+--- a/packages/libplacebo.cmake
++++ b/packages/libplacebo.cmake
+@@ -9,7 +9,7 @@ ExternalProject_Add(libplacebo
+         fast_float
+         libdovi
+         xxhash
+-    GIT_REPOSITORY https://github.com/haasn/libplacebo.git
++    GIT_REPOSITORY https://github.com/estrogently/libplacebo.git
+     SOURCE_DIR ${SOURCE_LOCATION}
+     GIT_CLONE_FLAGS "--filter=tree:0"
+     GIT_SUBMODULES ""
+-- 
+2.42.0.windows.1
+

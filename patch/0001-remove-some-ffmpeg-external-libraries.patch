@@ -1,0 +1,57 @@
+From dafd0d1da63cfa04ef1079a539874898557d03e7 Mon Sep 17 00:00:00 2001
+From: Bonnie <41487185+estrogently@users.noreply.github.com>
+Date: Sun, 26 Nov 2023 18:16:55 +0100
+Subject: [PATCH] remove some ffmpeg external libraries
+
+---
+ packages/ffmpeg.cmake | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/packages/ffmpeg.cmake b/packages/ffmpeg.cmake
+index baaf406..01c6b53 100644
+--- a/packages/ffmpeg.cmake
++++ b/packages/ffmpeg.cmake
+@@ -1,7 +1,6 @@
+ ExternalProject_Add(ffmpeg
+     DEPENDS
+         amf-headers
+-        avisynth-headers
+         nvcodec-headers
+         bzip2
+         gmp
+@@ -18,7 +17,6 @@ ExternalProject_Add(ffmpeg
+         libbs2b
+         libvpx
+         libwebp
+-        libzimg
+         libmysofa
+         fontconfig
+         harfbuzz
+@@ -39,7 +37,6 @@ ExternalProject_Add(ffmpeg
+         aom
+         rav1e
+         dav1d
+-        vapoursynth
+         uavs3d
+         davs2
+         rubberband
+@@ -61,8 +58,6 @@ ExternalProject_Add(ffmpeg
+         --enable-version3
+         --enable-nonfree
+         --enable-postproc
+-        --enable-avisynth
+-        --enable-vapoursynth
+         --enable-gmp
+         --enable-libass
+         --enable-libbluray
+@@ -90,7 +85,6 @@ ExternalProject_Add(ffmpeg
+         --enable-libdavs2
+         --enable-libuavs3d
+         --enable-libxvid
+-        --enable-libzimg
+         --enable-openssl
+         --enable-libxml2
+         --enable-libmysofa
+-- 
+2.42.0.windows.1
+
