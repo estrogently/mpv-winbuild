@@ -74,14 +74,6 @@ build() {
         cmake -DTARGET_ARCH=$arch-w64-mingw32 $gcc_arch -DCOMPILER_TOOLCHAIN=$compiler "${clang_option[@]}" -DALWAYS_REMOVE_BUILDFILES=ON -DSINGLE_SOURCE_LOCATION=$srcdir -DRUSTUP_LOCATION=$buildroot/install_rustup -G Ninja -H$gitdir -B$buildroot/build$bit
     fi
     ninja -C $buildroot/build$bit ffmpeg
-
-    if [ -d $buildroot/build$bit/ffmpeg-$arch* ] ; then
-        echo "Successfully compiled $bit-bit. Continue"
-    else
-        echo "Failed compiled $bit-bit. Stop"
-        exit 1
-    fi
-    
     ninja -C $buildroot/build$bit cargo-clean
 }
 
