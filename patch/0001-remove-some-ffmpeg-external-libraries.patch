@@ -1,14 +1,14 @@
-From dafd0d1da63cfa04ef1079a539874898557d03e7 Mon Sep 17 00:00:00 2001
+From b2a6a6ad8e5585696db7bd4b613bc5cd08813904 Mon Sep 17 00:00:00 2001
 From: Bonnie <41487185+estrogently@users.noreply.github.com>
-Date: Sun, 26 Nov 2023 18:16:55 +0100
+Date: Sun, 26 Nov 2023 20:17:04 +0100
 Subject: [PATCH] remove some ffmpeg external libraries
 
 ---
- packages/ffmpeg.cmake | 6 ------
- 1 file changed, 6 deletions(-)
+ packages/ffmpeg.cmake | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
 diff --git a/packages/ffmpeg.cmake b/packages/ffmpeg.cmake
-index baaf406..01c6b53 100644
+index baaf406..f4529bf 100644
 --- a/packages/ffmpeg.cmake
 +++ b/packages/ffmpeg.cmake
 @@ -1,7 +1,6 @@
@@ -19,7 +19,7 @@ index baaf406..01c6b53 100644
          nvcodec-headers
          bzip2
          gmp
-@@ -18,7 +17,6 @@ ExternalProject_Add(ffmpeg
+@@ -18,28 +17,20 @@ ExternalProject_Add(ffmpeg
          libbs2b
          libvpx
          libwebp
@@ -27,15 +27,28 @@ index baaf406..01c6b53 100644
          libmysofa
          fontconfig
          harfbuzz
-@@ -39,7 +37,6 @@ ExternalProject_Add(ffmpeg
-         aom
-         rav1e
-         dav1d
+         opus
+         speex
+         vorbis
+-        x264
+-        ${ffmpeg_x265}
+         xvidcore
+         libxml2
+         libvpl
+-        libopenmpt
+         libjxl
+         shaderc
+         libplacebo
+         libzvbi
+         libaribcaption
+-        aom
+-        rav1e
+-        dav1d
 -        vapoursynth
          uavs3d
          davs2
          rubberband
-@@ -61,8 +58,6 @@ ExternalProject_Add(ffmpeg
+@@ -61,8 +52,6 @@ ExternalProject_Add(ffmpeg
          --enable-version3
          --enable-nonfree
          --enable-postproc
@@ -44,7 +57,23 @@ index baaf406..01c6b53 100644
          --enable-gmp
          --enable-libass
          --enable-libbluray
-@@ -90,7 +85,6 @@ ExternalProject_Add(ffmpeg
+@@ -71,7 +60,6 @@ ExternalProject_Add(ffmpeg
+         --enable-libfontconfig
+         --enable-libharfbuzz
+         --enable-libmodplug
+-        --enable-libopenmpt
+         --enable-libmp3lame
+         --enable-lcms2
+         --enable-libopus
+@@ -82,15 +70,9 @@ ExternalProject_Add(ffmpeg
+         --enable-librubberband
+         --enable-libvpx
+         --enable-libwebp
+-        --enable-libx264
+-        --enable-libx265
+-        --enable-libaom
+-        --enable-librav1e
+-        --enable-libdav1d
          --enable-libdavs2
          --enable-libuavs3d
          --enable-libxvid
