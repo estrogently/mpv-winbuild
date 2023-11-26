@@ -1,86 +1,121 @@
-From b2a6a6ad8e5585696db7bd4b613bc5cd08813904 Mon Sep 17 00:00:00 2001
+From 380f1f2ae50740aa709e8d555702ee358d20bb3c Mon Sep 17 00:00:00 2001
 From: Bonnie <41487185+estrogently@users.noreply.github.com>
-Date: Sun, 26 Nov 2023 20:17:04 +0100
+Date: Sun, 26 Nov 2023 21:09:50 +0100
 Subject: [PATCH] remove some ffmpeg external libraries
 
 ---
- packages/ffmpeg.cmake | 18 ------------------
- 1 file changed, 18 deletions(-)
+ packages/ffmpeg.cmake | 65 -------------------------------------------
+ 1 file changed, 65 deletions(-)
 
 diff --git a/packages/ffmpeg.cmake b/packages/ffmpeg.cmake
-index baaf406..f4529bf 100644
+index baaf406..640c85f 100644
 --- a/packages/ffmpeg.cmake
 +++ b/packages/ffmpeg.cmake
-@@ -1,7 +1,6 @@
+@@ -1,48 +1,17 @@
  ExternalProject_Add(ffmpeg
      DEPENDS
          amf-headers
 -        avisynth-headers
          nvcodec-headers
          bzip2
-         gmp
-@@ -18,28 +17,20 @@ ExternalProject_Add(ffmpeg
-         libbs2b
-         libvpx
+-        gmp
+-        lame
+         lcms2
+         openssl
+-        libssh
+-        libsrt
+-        libass
+-        libbluray
+-        libmodplug
+         libpng
+-        libsoxr
+-        libbs2b
+-        libvpx
          libwebp
 -        libzimg
-         libmysofa
-         fontconfig
-         harfbuzz
-         opus
-         speex
-         vorbis
+-        libmysofa
+-        fontconfig
+-        harfbuzz
+-        opus
+-        speex
+-        vorbis
 -        x264
 -        ${ffmpeg_x265}
-         xvidcore
+-        xvidcore
          libxml2
          libvpl
 -        libopenmpt
          libjxl
          shaderc
          libplacebo
-         libzvbi
-         libaribcaption
+-        libzvbi
+-        libaribcaption
 -        aom
 -        rav1e
 -        dav1d
 -        vapoursynth
-         uavs3d
-         davs2
-         rubberband
-@@ -61,8 +52,6 @@ ExternalProject_Add(ffmpeg
+-        uavs3d
+-        davs2
+-        rubberband
+         libva
+     GIT_REPOSITORY https://github.com/FFmpeg/FFmpeg.git
+     SOURCE_DIR ${SOURCE_LOCATION}
+@@ -61,47 +30,14 @@ ExternalProject_Add(ffmpeg
          --enable-version3
          --enable-nonfree
          --enable-postproc
 -        --enable-avisynth
 -        --enable-vapoursynth
-         --enable-gmp
-         --enable-libass
-         --enable-libbluray
-@@ -71,7 +60,6 @@ ExternalProject_Add(ffmpeg
-         --enable-libfontconfig
-         --enable-libharfbuzz
-         --enable-libmodplug
+-        --enable-gmp
+-        --enable-libass
+-        --enable-libbluray
+-        --enable-libfreetype
+-        --enable-libfribidi
+-        --enable-libfontconfig
+-        --enable-libharfbuzz
+-        --enable-libmodplug
 -        --enable-libopenmpt
-         --enable-libmp3lame
+-        --enable-libmp3lame
          --enable-lcms2
-         --enable-libopus
-@@ -82,15 +70,9 @@ ExternalProject_Add(ffmpeg
-         --enable-librubberband
-         --enable-libvpx
+-        --enable-libopus
+-        --enable-libsoxr
+-        --enable-libspeex
+-        --enable-libvorbis
+-        --enable-libbs2b
+-        --enable-librubberband
+-        --enable-libvpx
          --enable-libwebp
 -        --enable-libx264
 -        --enable-libx265
 -        --enable-libaom
 -        --enable-librav1e
 -        --enable-libdav1d
-         --enable-libdavs2
-         --enable-libuavs3d
-         --enable-libxvid
+-        --enable-libdavs2
+-        --enable-libuavs3d
+-        --enable-libxvid
 -        --enable-libzimg
          --enable-openssl
          --enable-libxml2
-         --enable-libmysofa
+-        --enable-libmysofa
+-        --enable-libssh
+-        --enable-libsrt
+         --enable-libvpl
+         --enable-libjxl
+         --enable-libplacebo
+         --enable-libshaderc
+-        --enable-libzvbi
+-        --enable-libaribcaption
+         --enable-cuda-llvm
+         --enable-cuvid
+         --enable-nvdec
+@@ -113,7 +49,6 @@ ExternalProject_Add(ffmpeg
+         --enable-vaapi
+         --disable-vdpau
+         --disable-videotoolbox
+-        --disable-decoder=libaom_av1
+         --extra-cflags='-Wno-error=int-conversion'
+         "--extra-libs='${ffmpeg_extra_libs}'" # -lstdc++ / -lc++ needs by libjxl and shaderc
+     BUILD_COMMAND ${MAKE}
 -- 
 2.42.0.windows.1
 
