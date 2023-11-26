@@ -40,8 +40,6 @@ package() {
     fi
 
     build $bit $arch $gcc_arch
-    zip $bit $arch $x86_64_level
-    sudo rm -rf $buildroot/build$bit/mpv-*
     sudo chmod -R a+rwx $buildroot/build$bit
 }
 
@@ -75,9 +73,9 @@ build() {
         clang_option+=('-DCLANG_FLAGS=-fdata-sections -ffunction-sections' '-DLLD_FLAGS=--gc-sections -Xlink=-opt:safeicf')
         cmake -DTARGET_ARCH=$arch-w64-mingw32 $gcc_arch -DCOMPILER_TOOLCHAIN=$compiler "${clang_option[@]}" -DALWAYS_REMOVE_BUILDFILES=ON -DSINGLE_SOURCE_LOCATION=$srcdir -DRUSTUP_LOCATION=$buildroot/install_rustup -G Ninja -H$gitdir -B$buildroot/build$bit
     fi
-    ninja -C $buildroot/build$bit mpv
+    ninja -C $buildroot/build$bit ffmpeg
 
-    if [ -d $buildroot/build$bit/mpv-$arch* ] ; then
+    if [ -d $buildroot/build$bit/ffmpeg-$arch* ] ; then
         echo "Successfully compiled $bit-bit. Continue"
     else
         echo "Failed compiled $bit-bit. Stop"
