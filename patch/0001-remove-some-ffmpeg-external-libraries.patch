@@ -1,27 +1,26 @@
-From 380f1f2ae50740aa709e8d555702ee358d20bb3c Mon Sep 17 00:00:00 2001
+From 619e1c461bdec508e040509f3ade6e504fdb128f Mon Sep 17 00:00:00 2001
 From: Bonnie <41487185+estrogently@users.noreply.github.com>
-Date: Sun, 26 Nov 2023 21:09:50 +0100
+Date: Sun, 10 Dec 2023 17:21:00 +0100
 Subject: [PATCH] remove some ffmpeg external libraries
 
 ---
- packages/ffmpeg.cmake | 65 -------------------------------------------
- 1 file changed, 65 deletions(-)
+ packages/ffmpeg.cmake | 67 -------------------------------------------
+ 1 file changed, 67 deletions(-)
 
 diff --git a/packages/ffmpeg.cmake b/packages/ffmpeg.cmake
-index baaf406..640c85f 100644
+index e45afa8..e1334aa 100644
 --- a/packages/ffmpeg.cmake
 +++ b/packages/ffmpeg.cmake
-@@ -1,48 +1,17 @@
+@@ -1,47 +1,15 @@
  ExternalProject_Add(ffmpeg
      DEPENDS
          amf-headers
 -        avisynth-headers
          nvcodec-headers
          bzip2
--        gmp
 -        lame
          lcms2
-         openssl
+-        openssl
 -        libssh
 -        libsrt
 -        libass
@@ -31,7 +30,7 @@ index baaf406..640c85f 100644
 -        libsoxr
 -        libbs2b
 -        libvpx
-         libwebp
+-        libwebp
 -        libzimg
 -        libmysofa
 -        fontconfig
@@ -60,13 +59,12 @@ index baaf406..640c85f 100644
          libva
      GIT_REPOSITORY https://github.com/FFmpeg/FFmpeg.git
      SOURCE_DIR ${SOURCE_LOCATION}
-@@ -61,47 +30,14 @@ ExternalProject_Add(ffmpeg
+@@ -60,46 +28,12 @@ ExternalProject_Add(ffmpeg
          --enable-version3
          --enable-nonfree
          --enable-postproc
 -        --enable-avisynth
 -        --enable-vapoursynth
--        --enable-gmp
 -        --enable-libass
 -        --enable-libbluray
 -        --enable-libfreetype
@@ -84,7 +82,7 @@ index baaf406..640c85f 100644
 -        --enable-libbs2b
 -        --enable-librubberband
 -        --enable-libvpx
-         --enable-libwebp
+-        --enable-libwebp
 -        --enable-libx264
 -        --enable-libx265
 -        --enable-libaom
@@ -94,7 +92,7 @@ index baaf406..640c85f 100644
 -        --enable-libuavs3d
 -        --enable-libxvid
 -        --enable-libzimg
-         --enable-openssl
+-        --enable-openssl
          --enable-libxml2
 -        --enable-libmysofa
 -        --enable-libssh
@@ -108,7 +106,7 @@ index baaf406..640c85f 100644
          --enable-cuda-llvm
          --enable-cuvid
          --enable-nvdec
-@@ -113,7 +49,6 @@ ExternalProject_Add(ffmpeg
+@@ -111,7 +45,6 @@ ExternalProject_Add(ffmpeg
          --enable-vaapi
          --disable-vdpau
          --disable-videotoolbox
